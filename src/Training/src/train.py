@@ -26,8 +26,6 @@ def main(*args):
 
     ft_train(data_tuple)
 
-    
-
 
 if __name__ == "__main__":
     main(*sys.argv[1:])
