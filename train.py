@@ -19,7 +19,12 @@ def main(args: list[str]) -> None:
         sys.exit(1)
 
     theta0, theta1 = train_model(data)
-    save_thetas(theta0, theta1)
+    try:
+        save_thetas(theta0, theta1)
+    except ValueError as e:
+        print_error(str(e))
+        sys.exit(1)
+    print_success("Model parameters saved.")
 
 
 if __name__ == "__main__":
