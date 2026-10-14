@@ -57,4 +57,13 @@ uv run menu.py
 
 ## Use of AI
 
-<!-- TODO: describe what was generated or assisted by AI, as required by the subject. -->
+Claude (Anthropic) was used as an assistant on this project:
+
+- **Input validation:** wrote the validation of `thetas.json` (`load_thetas`) and of the CSV content (`load_dataset`).
+- **Interactive menu:** `menu.py`.
+- **Documentation:** this README, docstrings and comments in the code.
+- **Project management:** breakdown of the work into GitHub issues (tickets).
+- **Learning:** explanations of the subject, gradient descent and normalization, and code reviews.
+
+The core logic was written by me: the hypothesis (`estimate_price`), the gradient descent, the normalization/denormalization, saving the parameters and the prediction program.
+
