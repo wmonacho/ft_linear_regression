@@ -1,6 +1,7 @@
 """Terminal output and argument parsing."""
 
 import sys
+from pathlib import Path
 
 
 def print_error(message: str) -> None:
@@ -12,13 +13,14 @@ def print_success(message: str) -> None:
 
 
 def print_usage() -> None:
+    program = Path(sys.argv[0]).name
     print("\n\033[94m═══════════════════════════════════════════\033[0m")
-    print("\033[1m  Linear Regression - Training Program\033[0m")
+    print(f"\033[1m  Linear Regression - {program}\033[0m")
     print("\033[94m═══════════════════════════════════════════\033[0m\n")
     print("\033[93mUsage:\033[0m")
-    print("  python train.py <data_file.csv>\n")
+    print(f"  python {program} <data_file.csv>\n")
     print("\033[93mExample:\033[0m")
-    print("  python train.py data/data.csv\n")
+    print(f"  python {program} data/data.csv\n")
     print("\033[94m═══════════════════════════════════════════\033[0m\n")
 
 
