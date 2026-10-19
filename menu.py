@@ -35,6 +35,8 @@ DEFAULT_DATASET = "data/data.csv"
 MENU = (
     ("train", "Train the model"),
     ("predict", "Predict a price"),
+    ("plot", "Plot dataset and regression line"),
+    ("precision", "Show model precision"),
     ("status", "Show current parameters"),
     ("reset", "Reset training (delete thetas.json)"),
     ("quit", "Quit"),
@@ -140,7 +142,7 @@ def _select_by_number(options: tuple[tuple[str, str], ...]) -> str:
 
 
 def _train() -> None:
-    path = input(f"Dataset {DIM}[{DEFAULT_DATASET}]{RESET}: ").strip() or DEFAULT_DATASET
+    path = _ask_dataset()
     result = _with_spinner("Training with gradient descent", _run, "train.py", path)
     if result.returncode != 0:
         print(result.stderr or result.stdout, end="")
@@ -158,6 +160,26 @@ def _predict() -> None:
     finally:
         signal.signal(signal.SIGINT, previous_handler)
     print(f"{DIM}──────────────────{RESET}")
+
+
+def _plot() -> None:
+    _run_on_dataset("plot.py")
+
+
+def _precision() -> None:
+    _run_on_dataset("precision.py")
+
+
+def _run_on_dataset(script: str) -> None:
+    """Run a bonus program on a dataset, showing its output directly."""
+    path = _ask_dataset()
+    print(f"{DIM}─── {script} ───{RESET}", flush=True)
+    subprocess.run([sys.executable, script, path])
+    print(f"{DIM}──────────────────{RESET}")
+
+
+def _ask_dataset() -> str:
+    return input(f"Dataset {DIM}[{DEFAULT_DATASET}]{RESET}: ").strip() or DEFAULT_DATASET
 
 
 def _status() -> None:
@@ -215,6 +237,8 @@ def _pause() -> None:
 ACTIONS = {
     "train": _train,
     "predict": _predict,
+    "plot": _plot,
+    "precision": _precision,
     "status": _status,
     "reset": _reset,
 }
