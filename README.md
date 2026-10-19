@@ -74,16 +74,3 @@ uv run menu.py
 | `linear_regression/dataset.py` | CSV loading and validation |
 | `linear_regression/cli.py` | Terminal messages and argument parsing |
 
-## Use of AI
-
-Claude (Anthropic) was used as an assistant on this project:
-
-- **Input validation:** wrote the validation of `thetas.json` (`load_thetas`) and of the CSV content (`load_dataset`).
-- **Interactive menu:** `menu.py`.
-- **Bonus:** `plot.py`, `precision.py`, and guidance on the precision metrics (MAE, RMSE, R²).
-- **Documentation:** this README, docstrings and comments in the code.
-- **Project management:** breakdown of the work into GitHub issues (tickets).
-- **Learning:** explanations of the subject, gradient descent and normalization, and code reviews.
-
-The core logic was written by me: the hypothesis (`estimate_price`), the gradient descent, the normalization/denormalization, saving the parameters and the prediction program.
-
