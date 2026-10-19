@@ -34,12 +34,14 @@ def _gradient_descent(
     theta0, theta1 = 0.0, 0.0
     sample_count = len(x)
     for _ in range(iterations):
-        tmp_theta0 = 0.0
-        tmp_theta1 = 0.0
+        sum_errors = 0.0
+        sum_errors_km = 0.0
         for i in range(sample_count):
             error = estimate_price(x[i], theta0, theta1) - y[i]
-            tmp_theta0 += error
-            tmp_theta1 += error * x[i]
-        theta0 -= learning_rate * tmp_theta0 / sample_count
-        theta1 -= learning_rate * tmp_theta1 / sample_count
+            sum_errors += error
+            sum_errors_km += error * x[i]
+        tmp_theta0 = learning_rate * sum_errors / sample_count
+        tmp_theta1 = learning_rate * sum_errors_km / sample_count
+        theta0 -= tmp_theta0
+        theta1 -= tmp_theta1
     return theta0, theta1
